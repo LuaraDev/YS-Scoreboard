@@ -6,11 +6,25 @@ window.addEventListener('message', function(event) {
         case 'refresh':
             refreshAll(data);
             break;
+        case 'live':
+            live(data);
+            break;
         case 'close':
             close();
             break;
     }
 })
+
+function live(data) {
+    users = data.users
+    $('.player-counter-text').html(data.plycount + "/64"); 
+    $('.staff-counter-text').html(data.staffcount + "/11"); 
+
+    $(".player-list-container").empty()
+    for (const [key, value] of Object.entries(users)) {
+        addPlayers(value)
+    }
+}
 
 function refreshAll(data) {
     $('.scoreboard-container').fadeToggle();
