@@ -4,14 +4,33 @@ local isRun = false
 RegisterNetEvent('ys-scoreboard:open')
 AddEventHandler('ys-scoreboard:open', function(Users, PlyNum, Staff)
     StaffCount = Staff
-    
+
     SendNUIMessage({
         type = 'refresh',
         users = Users,
         plycount = PlyNum,
         staffcount = StaffCount,
     })
+    Live(Users, PlyNum, StaffCount)
 end)
+
+RegisterNetEvent('ys-scoreboard:live')
+AddEventHandler('ys-scoreboard:live', function(Users, PlyNum, Staff)
+    SendNUIMessage({
+        type = 'live',
+        users = Users,
+        plycount = PlyNum,
+        staffcount = Staff,
+    })
+end)
+
+function Live(Users, PlyNum, Staff)
+    while isRun do
+        TriggerServerEvent('ys-scoreboard:liveMode')
+        Wait(1500)
+    end
+end
+
 
 Citizen.CreateThread(function()
     Citizen.Wait(100)
@@ -35,6 +54,7 @@ function Init()
     SetNuiFocus(true, true)
     isRun = true
 end
+
 
 RegisterNUICallback("close", function()
     TriggerScreenblurFadeOut(500)
