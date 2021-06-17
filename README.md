@@ -8,6 +8,6 @@ Features:
 - Responsive UI.
 - Discord Auth - Include PFPs.
 - Live Sync.
-- 
+
 ©️ All rights reserved.
 ![image](https://user-images.githubusercontent.com/81599998/122256535-d7475980-ced7-11eb-8b58-1e3d4c6af8ee.png)
