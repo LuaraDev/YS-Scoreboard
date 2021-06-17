@@ -26,7 +26,7 @@ end)
 
 function Live(Users, PlyNum, Staff)
     while isRun do
-        TriggerServerEvent('ys-scoreboard:liveMode')
+        TriggerServerEvent('ys-scoreboard:getPlayers', true)
         Wait(1500)
     end
 end
