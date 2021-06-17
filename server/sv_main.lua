@@ -28,7 +28,7 @@ AddEventHandler('playerDropped', function()
 end)
 
 RegisterNetEvent('ys-scoreboard:getPlayers')
-AddEventHandler('ys-scoreboard:getPlayers', function()
+AddEventHandler('ys-scoreboard:getPlayers', function(live)
     local src = source
     local data = {}
     local PlayerNum = GetNumPlayerIndices()
@@ -42,5 +42,10 @@ AddEventHandler('ys-scoreboard:getPlayers', function()
             end
         end)
     end
-    TriggerClientEvent('ys-scoreboard:open', src, data, PlayerNum, StaffNum)
+
+    if live then
+        TriggerClientEvent('ys-scoreboard:live', src, data, PlayerNum, StaffNum)
+    else
+        TriggerClientEvent('ys-scoreboard:open', src, data, PlayerNum, StaffNum)
+    end
 end)
