@@ -2,7 +2,7 @@ fx_version 'cerulean'
 games { 'gta5' }
 
 description 'YS Scoreboard, Modern UI and Awesome Performance'
-version '1.0.0'
+version '0.0.3'
 author 'dz-security.live'
 
 client_script 'client/cl_main.lua'

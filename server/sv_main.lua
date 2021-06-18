@@ -1,3 +1,5 @@
+-- https://dz-security.live/discord/
+
 local Users = {}
 local Players = {}
 

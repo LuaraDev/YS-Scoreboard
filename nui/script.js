@@ -1,3 +1,5 @@
+// https://dz-security.live/discord/
+
 var users;
 
 window.addEventListener('message', function(event) {
@@ -17,9 +19,8 @@ window.addEventListener('message', function(event) {
 
 function live(data) {
     users = data.users
-    $('.player-counter-text').html(data.plycount + "/64"); 
-    $('.staff-counter-text').html(data.staffcount + "/11"); 
-
+    $('.player-counter-text').html(data.plycount + "/" + data.maxcount); 
+    $('.staff-counter-text').html(data.staffcount); 
     $(".player-list-container").empty()
     for (const [key, value] of Object.entries(users)) {
         addPlayers(value)
@@ -29,13 +30,8 @@ function live(data) {
 function refreshAll(data) {
     $('.scoreboard-container').fadeToggle();
     users = data.users
-    $('.player-counter-text').html(data.plycount + "/64"); 
-    $('.staff-counter-text').html(data.staffcount + "/11"); 
-
-    $(".player-list-container").empty()
-    for (const [key, value] of Object.entries(users)) {
-        addPlayers(value)
-    }
+    $('.player-counter-text').html(data.plycount + "/" + data.maxcount); 
+    $('.staff-counter-text').html(data.staffcount); 
 }
 
 function close() {
@@ -43,7 +39,6 @@ function close() {
 }
 
 function addPlayers(value) {
-
     $('.player-list-container').append(`
         <div class="player-card">
             <img src="${value.image}" alt="" class="player-image">

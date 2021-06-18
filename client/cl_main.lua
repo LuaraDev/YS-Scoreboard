@@ -1,15 +1,19 @@
+-- https://dz-security.live/discord/
+
 local StaffCount = 0
 local isRun = false
+
+MaxPlayers = GetConvarInt('sv_maxclients', 32)
 
 RegisterNetEvent('ys-scoreboard:open')
 AddEventHandler('ys-scoreboard:open', function(Users, PlyNum, Staff)
     StaffCount = Staff
-
     SendNUIMessage({
         type = 'refresh',
         users = Users,
         plycount = PlyNum,
         staffcount = StaffCount,
+        maxcount = MaxPlayers,
     })
     Live(Users, PlyNum, StaffCount)
 end)
@@ -21,6 +25,7 @@ AddEventHandler('ys-scoreboard:live', function(Users, PlyNum, Staff)
         users = Users,
         plycount = PlyNum,
         staffcount = Staff,
+        maxcount = MaxPlayers,
     })
 end)
 
@@ -61,3 +66,7 @@ RegisterNUICallback("close", function()
     SetNuiFocus(false, false)
     isRun = false
 end)
+
+if MaxPlayers > 1250 then
+    MaxPlayers = GetConvarInt('sv_maxclients', 32)
+end

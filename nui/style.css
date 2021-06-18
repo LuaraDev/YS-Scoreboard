@@ -1,3 +1,5 @@
+/* https://dz-security.live/discord/ */
+
 @font-face {
     font-family: ys;
     src: url(https://cdn.discordapp.com/attachments/822897469272621087/842152641554939944/ploni-bold-aaa.ttf);
@@ -120,11 +122,3 @@ body {
     border-radius: 15vh;
     background: #0083ca;
 }
-
-.player-card:hover {
-    padding: 1.5vh;
-    transition: 0.3s;
-}
-
-
-  
