@@ -1,7 +1,7 @@
 YS Scoreboard:
 Thanks for choosing `Development-Zone`!
 
-Installation:
+- Installation:
     - `config.lua`:
         - Change `DZ.DiscordBotToken` value to your discord bot token that in your own guild.
         - Change `DZ.GuildID` value to your own discord guild id.
