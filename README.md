@@ -1,6 +1,14 @@
 YS Scoreboard:
 Thanks for choosing `Development-Zone`!
 
+Installation:
+    `config.lua`:
+        Change `DZ.DiscordBotToken` value to your discord bot token that in your own guild.
+        Change `DZ.GuildID` value to your own discord guild id.
+    `client` > `cl_main.lua`:     
+        Change `MaxPlayers` (line 6) value to your max player count.
+        Example - `GetConvarInt('sv_maxclients', 32)` (32 Players).
+
 Features: 
 - Supported Framework - `ESX`.
 - Modern UI Design.
