@@ -1,4 +1,4 @@
-DZ Scoreboard:
+DZ & YS Scoreboard:
 Thanks for choosing `Development-Zone`!
 
 - Installation:
