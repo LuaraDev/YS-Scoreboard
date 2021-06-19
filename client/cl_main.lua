@@ -5,6 +5,9 @@ local isRun = false
 
 MaxPlayers = GetConvarInt('sv_maxclients', 32)
 
+RegisterCommand('ys-scoreboard:open', function() Init() end, false)
+RegisterKeyMapping('ys-scoreboard:open', 'Scoreboard : Open', 'keyboard', 'PAGEUP')
+
 RegisterNetEvent('ys-scoreboard:open')
 AddEventHandler('ys-scoreboard:open', function(Users, PlyNum, Staff)
     StaffCount = Staff
@@ -36,21 +39,9 @@ function Live(Users, PlyNum, Staff)
     end
 end
 
-
 Citizen.CreateThread(function()
     Citizen.Wait(100)
     TriggerServerEvent('ys-scoreboard:load')
-end)
-
-Citizen.CreateThread(function()
-    Wait(500)
-    while true do
-        if IsControlJustPressed(0, 10) and not isRun then
-            Init()
-        end
-
-        Wait(1)
-    end
 end)
 
 function Init()
@@ -59,7 +50,6 @@ function Init()
     SetNuiFocus(true, true)
     isRun = true
 end
-
 
 RegisterNUICallback("close", function()
     TriggerScreenblurFadeOut(500)
