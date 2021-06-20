@@ -14,15 +14,19 @@ AddEventHandler('ys-scoreboard:load', function()
         end
     end
 
-    local identifierArgs = identifier
-    local Finalidentifier = identifierArgs:gsub("discord:", "")
-    identifier = tonumber(Finalidentifier)
-    PerformHttpRequest("https://discordapp.com/api/guilds/" .. DZ.GuildID .. "/members/"..identifier, function(error, result, header)
-        local result = json.decode(result)
-        local url = "https://cdn.discordapp.com/avatars/"..result["user"]["id"].."/"..result["user"]["avatar"].."?size=128"
-        local username = result["user"]["username"].."#"..result["user"]["discriminator"]
-        Users[src] = {id = src, avatar = url, name = username}
-    end, "GET", "", {["Content-type"] = "application/json", ["Authorization"] = "Bot " .. DZ.DiscordBotToken})
+    if discordId ~= nil then
+      local identifierArgs = identifier
+      local Finalidentifier = identifierArgs:gsub("discord:", "")
+      identifier = tonumber(Finalidentifier)
+      PerformHttpRequest("https://discordapp.com/api/guilds/" .. DZ.GuildID .. "/members/"..identifier, function(error, result, header)
+	local result = json.decode(result)
+	local url = "https://cdn.discordapp.com/avatars/"..result["user"]["id"].."/"..result["user"]["avatar"].."?size=128"
+	local username = result["user"]["username"].."#"..result["user"]["discriminator"]
+	Users[src] = {id = src, avatar = url, name = username}
+      end, "GET", "", {["Content-type"] = "application/json", ["Authorization"] = "Bot " .. DZ.DiscordBotToken})
+    else
+      Users[src] = {id = src, avatar = "https://discordapp.com/assets/7c8f476123d28d103efe381543274c25.png", name = GetPlayerName(src)}
+    end
 end)
 
 AddEventHandler('playerDropped', function()
